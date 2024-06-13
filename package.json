@@ -1,0 +1,17 @@
+{
+  "name": "semitone-difference-basic-algorithm-scripting",
+  "version": "1.0.0",
+  "scripts": {
+    "test" : "jasmine",
+    "build" : "npx webpack"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "jasmine": "^5.1.0",
+    "jsdom": "^24.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
