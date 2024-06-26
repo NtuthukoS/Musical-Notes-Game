@@ -15,7 +15,7 @@ const {
   displayed,
   answers,
 } = require("../src/dom_elements");
-const { displayNotes } = require("../src/app");
+const { displayNotes,displayResult } = require("../src/app");
 const { calculateNoteDifferences } = require("../src/helper_functions");
 const { errorMessages } = require("../src/helper_objects");
 
@@ -28,6 +28,7 @@ describe("App Event Listener Tests", () => {
     setNotes = buddy.getCurrentNotes();
     displayNotes(buddy);
     jasmine.clock().install();
+    displayed.streakDisplay.textContent = "Streak: 0";
   });
 
   afterEach(() => {
@@ -92,5 +93,50 @@ describe("App Event Listener Tests", () => {
     expect(displayed.resultMessage.textContent).toBe(
       errorMessages.invalidSemitoneError
     );
+  });
+
+  it("should increment streak when the answer is correct", () => {
+    const correctAnswer = calculateNoteDifferences(
+      setNotes[0],
+      setNotes[1]
+    ).clockwise;
+    userInput.answerInput.value = correctAnswer;
+    buttons.answerForm.dispatchEvent(new window.Event("submit"));
+    expect(displayed.resultMessage.textContent).toBe(answers.correct);
+    expect(displayed.streakDisplay.textContent).toBe("Streak: 1");
+  });
+
+  it("should reset streak when the answer is incorrect after randomization", () => {
+    displayResult(false);
+    expect(displayed.resultMessage.textContent).toBe(answers.incorrect);
+    expect(displayed.streakDisplay.textContent).toBe("Streak: 0");
+  });
+  
+
+  it("should display explanation and reset streak when the quit button is clicked", () => {
+    buttons.giveUpButton.click();
+    expect(displayed.explanationMessage.textContent).toContain("Explanation");
+    expect(displayed.streakDisplay.textContent).toBe("Streak: 0");
+    expect(buttons.submitButton.disabled).toBe(true);
+  });
+
+  it("should clear explanation message when the randomize button is clicked", () => {
+    displayed.explanationMessage.textContent = "This is an explanation.";
+    buttons.randomizeButton.click();
+
+    expect(displayed.explanationMessage.textContent).toBe("");
+  });
+
+  it("should disable the submit button when the answer is correct and enable after randomize button is clicked", () => {
+    const correctAnswer = calculateNoteDifferences(
+      setNotes[0],
+      setNotes[1]
+    ).clockwise;
+    userInput.answerInput.value = correctAnswer;
+    buttons.answerForm.dispatchEvent(new window.Event("submit"));
+    expect(buttons.submitButton.disabled).toBe(true);
+
+    buttons.randomizeButton.click();
+    expect(buttons.submitButton.disabled).toBe(false);
   });
 });
