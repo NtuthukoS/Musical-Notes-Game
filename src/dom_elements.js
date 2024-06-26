@@ -1,23 +1,34 @@
+const userInput = {
+  answerInput: document.getElementById("answerInput")
+};
+
+const buttons = {
+  answerForm: document.getElementById("answerForm"),
+  randomizeButton: document.getElementById("randomizeButton"),
+  submitButton: document.querySelector("#answerForm button[type='submit']"),
+  giveUpButton: document.getElementById("giveUpButton")
+};
+
 const displayed = {
   notesDisplay: document.getElementById("notesDisplay"),
   resultMessage: document.getElementById("resultMessage"),
-};
-
-const userInput = {
-  answerInput: document.getElementById("answerInput"),
-};
-
-
-
-const buttons = {
-  randomizeButton: document.getElementById("randomizeButton"),
-  answerForm: document.getElementById("answerForm"),
-  submitButton: document.querySelector('button[type="submit"]'),
+  streakDisplay: document.getElementById("streakDisplay"),
+  explanationMessage: document.getElementById("explanationMessage")
 };
 
 const answers = {
-  correct: "Correct! Well done.",
-  incorrect: "Incorrect. Please try again.",
+  correct: "Correct!",
+  incorrect: "Incorrect!"
 };
 
-module.exports = { displayed, userInput, buttons, answers };
+const errorMessages = {
+  invalidSemitoneError: "Invalid semitone difference"
+};
+
+module.exports = {
+  userInput,
+  buttons,
+  displayed,
+  answers,
+  errorMessages
+};
