@@ -1,28 +1,28 @@
 const userInput = {
-  answerInput: document.getElementById("answerInput")
+  answerInput: document.getElementById("answerInput"),
 };
 
 const buttons = {
   answerForm: document.getElementById("answerForm"),
   randomizeButton: document.getElementById("randomizeButton"),
   submitButton: document.querySelector("#answerForm button[type='submit']"),
-  giveUpButton: document.getElementById("giveUpButton")
+  giveUpButton: document.getElementById("giveUpButton"),
 };
 
 const displayed = {
   notesDisplay: document.getElementById("notesDisplay"),
   resultMessage: document.getElementById("resultMessage"),
   streakDisplay: document.getElementById("streakDisplay"),
-  explanationMessage: document.getElementById("explanationMessage")
+  explanationMessage: document.getElementById("explanationMessage"),
 };
 
 const answers = {
   correct: "Correct!",
-  incorrect: "Incorrect!"
+  incorrect: "Incorrect!",
 };
 
 const errorMessages = {
-  invalidSemitoneError: "Invalid semitone difference"
+  invalidSemitoneError: "Invalid semitone difference",
 };
 
 module.exports = {
@@ -30,5 +30,5 @@ module.exports = {
   buttons,
   displayed,
   answers,
-  errorMessages
+  errorMessages,
 };

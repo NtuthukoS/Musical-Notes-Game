@@ -1,12 +1,13 @@
 const errorMessages = {
   invalidNoteError: "Invalid note provided",
-  invalidSemitoneError: "Invalid input. It should be a positive integer between 1 and 11.",
+  invalidSemitoneError:
+    "Invalid input. It should be a positive integer between 1 and 11.",
   sameNoteError: "Cannot set two of the same notes.",
 };
 
 const musicNotes = [
-  ["A", "Bb"],
-  "A#",
+  "A",
+  ["A#", "Bb"],
   "B",
   "C",
   ["C#", "Db"],
@@ -22,7 +23,7 @@ const musicNotes = [
 const noteToIndex = {};
 musicNotes.forEach((note, index) => {
   if (Array.isArray(note)) {
-    note.forEach(n => noteToIndex[n] = index);
+    note.forEach((n) => (noteToIndex[n] = index));
   } else {
     noteToIndex[note] = index;
   }

@@ -40,15 +40,37 @@ function displayExplanation() {
     currentNotes[0],
     currentNotes[1]
   );
-  explanationMessage.textContent = `Explanation - These are the notes in their order : ${musicNotes.join(
-    ","
-  )} .The notes are ${currentNotes[0]} and ${
-    currentNotes[1]
-  }. The correct semitone difference is ${
-    correctAnswers.clockwise
-  } in the clockwise direction & ${
-    correctAnswers.anticlockwise
-  } in the anti-clockwise.`;
+
+  const harmonicNotes = [
+    "A/Bb",
+    "A#",
+    "B",
+    "C",
+    "C#/Db",
+    "D",
+    "D#/Eb",
+    "E",
+    "F",
+    "F#/Gb",
+    "G",
+    "G#/Ab",
+  ];
+
+  const formattedNotes = harmonicNotes
+    .map((note) => {
+      const seperatedNotes = note.split("/");
+
+      if (
+        seperatedNotes.includes(currentNotes[0]) ||
+        seperatedNotes.includes(currentNotes[1])
+      ) {
+        return `<b>${seperatedNotes.join("/")}</b>`;
+      }
+      return note;
+    })
+    .join(", ");
+
+  explanationMessage.innerHTML = `Explanation - These are the notes in their order: ${formattedNotes}. The notes are <b>${currentNotes[0]}</b> and <b>${currentNotes[1]}</b>. The correct semitone difference is <b>${correctAnswers.anticlockwise}</b> in the clockwise direction & <b>${correctAnswers.clockwise}</b> in the anti-clockwise.`;
 }
 
 function clearResultMessage() {
@@ -57,7 +79,7 @@ function clearResultMessage() {
   answerInput.value = "";
 }
 
-function clearExplanationMessage(){
+function clearExplanationMessage() {
   displayed.explanationMessage.textContent = "";
 }
 

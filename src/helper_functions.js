@@ -25,7 +25,7 @@ function getRandomNote() {
 }
 
 function validateNotes(notes) {
-  return notes.every(note => noteToIndex.hasOwnProperty(note));
+  return notes.every((note) => noteToIndex.hasOwnProperty(note));
 }
 
 function generateUniqueNote(note1) {
@@ -48,4 +48,3 @@ module.exports = {
   validateNotes,
   generateUniqueNote,
 };
-
