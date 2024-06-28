@@ -1,4 +1,8 @@
-const { errorMessages, musicNotes, noteToIndex } = require("../src/helper_objects");
+const {
+  errorMessages,
+  musicNotes,
+  noteToIndex,
+} = require("../src/helper_objects");
 const { generateUniqueNote } = require("../src/helper_functions");
 const { JamBuddy } = require("../src/jam_buddy");
 
@@ -16,7 +20,9 @@ describe("JamBuddy", () => {
       buddy.randomizeCurrentNotes();
       expect(buddy.currentNotes.length).toBe(2);
       expect(
-        buddy.currentNotes.every(note => Object.keys(noteToIndex).includes(note))
+        buddy.currentNotes.every((note) =>
+          Object.keys(noteToIndex).includes(note)
+        )
       ).toBe(true);
     });
   });
@@ -98,7 +104,6 @@ describe("JamBuddy", () => {
       buddy.setCurrentNotes(sampleNotesWithFlat);
       expect(buddy.checkAnswer(3)).toBe(true);
     });
-
   });
 
   describe("generateUniqueNote", () => {

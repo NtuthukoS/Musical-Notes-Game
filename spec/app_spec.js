@@ -15,7 +15,7 @@ const {
   displayed,
   answers,
 } = require("../src/dom_elements");
-const { displayNotes,displayResult } = require("../src/app");
+const { displayNotes, displayResult } = require("../src/app");
 const { calculateNoteDifferences } = require("../src/helper_functions");
 const { errorMessages } = require("../src/helper_objects");
 
@@ -111,7 +111,6 @@ describe("App Event Listener Tests", () => {
     expect(displayed.resultMessage.textContent).toBe(answers.incorrect);
     expect(displayed.streakDisplay.textContent).toBe("Streak: 0");
   });
-  
 
   it("should display explanation and reset streak when the quit button is clicked", () => {
     buttons.giveUpButton.click();
